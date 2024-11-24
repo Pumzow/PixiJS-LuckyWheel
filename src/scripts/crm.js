@@ -3,6 +3,25 @@ import { config } from "./config";
 let queue = [];
 let fsQueue = [];
 
+export function draw() {
+    if (queue.length === 0) {
+        queue = generateBucket();
+    }
+
+    console.log(queue);
+    const nextPool = queue.shift();
+    return selectWeightedRandom(config[nextPool]).reward;
+}
+
+export function drawFs() {
+    if (fsQueue.length === 0) {
+        fsQueue = generateFsBucket();
+    }
+
+    const nextPool = fsQueue.shift();
+    return selectWeightedRandom(config[nextPool]).reward;
+}
+
 function generateBucket() {
     return shuffleAndFix(config.BUCKET_TEMPLATE(), "POOL_C");
 }
@@ -22,25 +41,6 @@ function selectWeightedRandom(pool) {
             return reward;
         }
     }
-}
-
-export function draw() {
-    if (queue.length === 0) {
-        queue = generateBucket();
-    }
-
-    console.log(queue);
-    const nextPool = queue.shift();
-    return selectWeightedRandom(config[nextPool]).reward;
-}
-
-export function drawFs() {
-    if (fsQueue.length === 0) {
-        fsQueue = generateFsBucket();
-    }
-
-    const nextPool = fsQueue.shift();
-    return selectWeightedRandom(config[nextPool]).reward;
 }
 
 function shuffleAndFix(queue, repeateableValue, maxAttempts = 500) {
