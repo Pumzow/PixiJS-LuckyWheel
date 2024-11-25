@@ -2,12 +2,12 @@ import { TextStyle } from "pixi.js";
 
 export const config = {
     FREESPINS: 3,
-    SECTORS: ["1000", "500", "250", "150", "100", "50", "25", "5", "500", "FREE SPINS", "1000", "500", "250", "150", "100", "50", "25", "5",],
+    SECTORS: ["x2", "x3", "250", "150", "100", "50", "25", "5", "x3", "FREE SPINS", "x2", "x3", "250", "150", "100", "50", "25", "5",],
     POOL_0: [
-        { reward: "1000", weight: 1 },
+        { reward: "x2", weight: 1 },
     ],
     POOL_1: [
-        { reward: "500", weight: 1 },
+        { reward: "x3", weight: 1 },
     ],
     POOL_C: [
         { reward: "250", weight: 1 },
@@ -16,7 +16,7 @@ export const config = {
         { reward: "50", weight: 1 },
         { reward: "25", weight: 1 },
         { reward: "5", weight: 1 },
-        { reward: "FREE SPINS", weight: 100 },
+        { reward: "FREE SPINS", weight: 1 },
     ],
     POOL_FS: [
         { reward: "250", weight: 1 },
@@ -48,4 +48,8 @@ export const config = {
         trim: true
     }),
     WHEEL_SPIN_DURATION : 3,
+    INITIAL_BALANCE: 100,
+    STAKES: [10 , 20, 50, 100],
+    UI: { width: 400, height: 100, roundness: 20 },
+    BUTTON_COLOR: {default: 0x444444, selected: 0xccaa4e},
 };
